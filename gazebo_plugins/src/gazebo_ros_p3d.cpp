@@ -290,7 +290,7 @@ void GazeboRosP3D::UpdateChild()
 
         // Apply Constant Offsets
         // apply xyz offsets and get position and rotation components
-        pose.Pos() = pose.Pos() + this->offset_.Pos();
+        pose.Pos() = this->offset_.Rot()*pose.Pos() + this->offset_.Pos();
         // apply rpy offsets
         pose.Rot() = this->offset_.Rot()*pose.Rot();
         pose.Rot().Normalize();
